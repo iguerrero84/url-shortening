@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 /**
- * @author Nasim Salmany
+ * @author Israel Guerrero
  */
 
 @RunWith(SpringRunner.class)
@@ -135,7 +135,6 @@ public class UrlShorteningControllerTest {
                 .statusCode(HttpStatus.BAD_REQUEST.value())
                 .contentType(ContentType.JSON)
                 .body("errorMessage", notNullValue())
-
         ;
     }
 

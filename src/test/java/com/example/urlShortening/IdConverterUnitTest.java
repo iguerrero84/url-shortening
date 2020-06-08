@@ -11,48 +11,44 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author Nasim Salmany
+ * @author Israel Guerrero
  */
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class IdConverterUnitTest {
+
     @Autowired
     private IdConverterService idConverterService;
 
     @Test
     public void success_encode_125_base10_to_base62() {
         String base62Str = idConverterService.encode(125L);
-        assertEquals("cb", base62Str);
+        assertEquals("ba", base62Str);
     }
 
     @Test
     public void success_encode_19158_base10_to_base62() {
-        String s = idConverterService.encode(19158L);
-        assertEquals("e9a", s);
+        String s = idConverterService.encode(19168L);
+        assertEquals("d8j", s);
     }
 
     @Test
     public void success_encode_base10_to_base62() {
-        assertEquals("ba", idConverterService.encode(62L));
-        assertEquals("bb", idConverterService.encode(63L));
-        assertEquals("bc", idConverterService.encode(64L));
-        assertEquals("b9", idConverterService.encode(123L));
-        assertEquals("ca", idConverterService.encode(124L));
-        assertEquals("c9", idConverterService.encode(185L));
-    }
-
-    @Test
-    public void success_encode_biggest_possible_integer_base10_to_base62() {
-        assertEquals("k9viXaIfiWh", idConverterService.encode(Long.MAX_VALUE));
+        assertEquals("aa", idConverterService.encode(63L));
+        assertEquals("ab", idConverterService.encode(64L));
+        assertEquals("ac", idConverterService.encode(65L));
+        assertEquals("a8", idConverterService.encode(123L));
+        assertEquals("bb", idConverterService.encode(126L));
+        assertEquals("ca", idConverterService.encode(187L));
     }
 
     @Test
     public void success_decode_base62_to_base10() {
-        long i = idConverterService.decode("cb");
+        long i = idConverterService.decode("ba");
         assertEquals(125L, i);
-        long j = idConverterService.decode("e9a");
-        assertEquals(19158L, j);
+        long j = idConverterService.decode("d8j");
+        assertEquals(19168L, j);
     }
 }

@@ -19,7 +19,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 
 /**
- * @author Nasim Salmany
+ * @author Israel Guerrero
  */
 
 @RunWith(SpringRunner.class)
